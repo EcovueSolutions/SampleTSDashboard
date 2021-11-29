@@ -3,18 +3,17 @@ let password = "Welcome1";
 let username = "prachaveti";
 configs.authCredentials = btoa(username + ":" + password);
 
-export function loadConfigs() {
+export const loadConfigs = async () => {
     let configs = sessionStorage.getItem('configs')
-    console.log('Get Configurations from local storage before loading Configs API: ' + configs);
+    console.log('Get Configurations from local storage before loading Configs API: ' + JSON.stringify(configs));
     if (configs == null) {
         console.log('Invoking Configs Async Function');
-        configsApi()
+        await configsApi()
             .then(data => {
                 console.log("Setting configurations to Local storage");
                 sessionStorage.setItem('configs', data);
             });
     }
-
 }
 
 async function configsApi() {
