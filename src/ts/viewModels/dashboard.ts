@@ -1,8 +1,14 @@
 import * as AccUtils from "../accUtils";
+import * as ko from 'knockout';
 class DashboardViewModel {
-
+  configsVal:ko.Observable=ko.observable("none");
   constructor() {
-    console.log('In Dashboard, get configs from local storage: '+sessionStorage.getItem('configs'));
+    let configs=sessionStorage.getItem('configs');
+    console.log('In Dashboard, get configs from local storage: '+configs);
+    if(configs==null)
+      this.configsVal('it is null');
+    else
+      this.configsVal('received object: '+configs);
   }
 
   /**
