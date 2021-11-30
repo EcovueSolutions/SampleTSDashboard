@@ -11,7 +11,6 @@ import "ojs/ojknockout";
 import "ojs/ojmodule-element";
 import { ojNavigationList } from "ojs/ojnavigationlist";
 import Context = require("ojs/ojcontext");
-import {loadConfigs} from './configurations';
 
 interface CoreRouterDetail {
   label: string;
@@ -32,10 +31,9 @@ class RootViewModel {
   constructor() {
     // handle announcements sent when pages change, for Accessibility.
     console.log('Invoking load configs from appController');
-    loadConfigs();
     this.manner = ko.observable("polite");
     this.message = ko.observable();
-
+    //loadConfigs();
     let globalBodyElement: HTMLElement = document.getElementById("globalBody") as HTMLElement;
     globalBodyElement.addEventListener("announce", this.announcementHandler, false);
 

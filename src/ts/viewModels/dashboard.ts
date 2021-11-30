@@ -1,14 +1,9 @@
 import * as AccUtils from "../accUtils";
 import * as ko from 'knockout';
 class DashboardViewModel {
-  configsVal:ko.Observable=ko.observable("none");
-  constructor() {
-    let configs=sessionStorage.getItem('configs');
-    console.log('In Dashboard, get configs from local storage: '+configs);
-    if(configs==null)
-      this.configsVal('it is null');
-    else
-      this.configsVal('received object: '+configs);
+  configsVal: ko.Observable = ko.observable("none");
+   constructor() {
+ 
   }
 
   /**
@@ -22,6 +17,12 @@ class DashboardViewModel {
   connected(): void {
     AccUtils.announce("Dashboard page loaded.");
     document.title = "Dashboard";
+    let configs = sessionStorage.getItem('configs');
+    console.log('In Dashboard transition, get configs from local storage: ' + JSON.stringify(configs));
+    if(configs==null)
+      this.configsVal('it is null');
+    else
+      this.configsVal('received object: '+JSON.stringify(configs));
     // implement further logic if needed
   }
 
@@ -38,6 +39,7 @@ class DashboardViewModel {
    */
   transitionCompleted(): void {
     // implement if needed
+ 
   }
 }
 
