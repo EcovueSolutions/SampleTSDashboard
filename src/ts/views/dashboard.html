@@ -7,3 +7,17 @@
   <b>Configurations value from session storage:</b>
   <span><oj-bind-text value="[[configsVal]]"></oj-bind-text></span>
 </div>
+<div class="oj-hybrid-padding">
+	<oj-select-one id="context" options="[[contextsDataProvider]]" placeholder="" value="{{contextSelectedVal}}"
+		on-value-changed="[[contextValueChangedHandler]]" style='width:95%;' label-hint="Select Context">
+	</oj-select-one>
+
+</div>
+
+<div class="oj-hybrid-padding">
+	<oj-select-one id="child" options="[[childDataProvider]]" placeholder="" value="{{childVal}}" 
+  style='width:95%;' label-hint="Select Child">
+	</oj-select-one>
+
+</div>
+

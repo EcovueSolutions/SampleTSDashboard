@@ -19,6 +19,7 @@ whenDocumentReady().then(async () => {
   if (document.body.classList.contains("oj-hybrid")) {
     document.addEventListener("deviceready", init);
   } else {
+    console.log("Invoking loadConfigs from root");
     await loadConfigs();
     init();
   }

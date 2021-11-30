@@ -30,7 +30,7 @@ class RootViewModel {
 
   constructor() {
     // handle announcements sent when pages change, for Accessibility.
-    console.log('Invoking load configs from appController');
+    //console.log('Invoking load configs from appController');
     this.manner = ko.observable("polite");
     this.message = ko.observable();
     //loadConfigs();
