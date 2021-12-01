@@ -1,26 +1,10 @@
-let configs = { "dashboardservices": "https://wcidev.ecovues.com/dashboardwebservices/resources/", "authCredentials": "" };
-let password = "Welcome1";
-let username = "prachaveti";
-configs.authCredentials = btoa(username + ":" + password);
-let sessionObj={'ab':1};
+//let configs = { "dashboardservices": "https://wcidev.ecovues.com/dashboardwebservices/resources/", "authCredentials": "" };
+//let password = "Welcome1";
+//let username = "prachaveti";
+//configs.authCredentials = btoa(username + ":" + password);
+let sessionObj = { 'ab': 1 };
 
-export const loadConfigs = async () => {
-    let configs:any = sessionStorage.getItem('configs')
-    //console.log('Get Configurations from session storage before loading Configs API: ' + configs);
-    if (configs == null) {
-        console.log('Invoking Configs Async Function');
-        await configsApi()
-            .then(data => {
-                console.log("Setting configurations to Session storage");
-                for (var obj of data.items) {
-                    sessionObj[obj.configs_name] = obj.configs_value;
-                }
-                sessionStorage.setItem('configs', JSON.stringify(sessionObj));
-            });
-    }
-}
-
-async function configsApi() {
+const configsApi = async () => {
     let fetchData = {
         method: "GET",
         headers: new Headers({
@@ -33,3 +17,19 @@ async function configsApi() {
     console.log('After configs API completed');
     return result;
 }
+//export const loadConfigs = async () => {
+let configs: any = sessionStorage.getItem('configs')
+//console.log('Get Configurations from session storage before loading Configs API: ' + configs);
+if (configs == null) {
+    console.log('Invoking Configs Async Function');
+    configsApi()
+        .then(data => {
+            console.log("Setting configurations to Session storage");
+            for (var obj of data.items) {
+                sessionObj[obj.configs_name] = obj.configs_value;
+            }
+            sessionStorage.setItem('configs', JSON.stringify(sessionObj));
+        });
+}
+//}
+

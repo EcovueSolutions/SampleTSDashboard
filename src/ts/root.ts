@@ -6,7 +6,6 @@ import "ojs/ojmodule";
 import "ojs/ojnavigationlist";
 import "ojs/ojbutton";
 import "ojs/ojtoolbar";
-import { loadConfigs } from './configurations';
 
 function init(): void {
   // bind your ViewModel for the content of the whole page body.
@@ -20,7 +19,6 @@ whenDocumentReady().then(async () => {
     document.addEventListener("deviceready", init);
   } else {
     console.log("Invoking loadConfigs from root");
-    await loadConfigs();
     init();
   }
 });

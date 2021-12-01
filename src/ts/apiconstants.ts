@@ -1,7 +1,4 @@
-let configsobj:any = null;
-while(configsobj === null){
-configsobj = JSON.parse(sessionStorage.getItem('configs'));
-}
+let configsobj:any = JSON.parse(sessionStorage.getItem('configs'));
 console.log('Configs Obj: '+configsobj);
 let apmodelservice = configsobj.baseURL;
 let apwebservice = configsobj.ucmUrl;
