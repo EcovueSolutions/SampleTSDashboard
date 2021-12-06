@@ -2,16 +2,27 @@ import * as AccUtils from "../accUtils";
 import * as ko from 'knockout';
 import 'ojs/ojselectsingle';
 import 'ojs/ojselectcombobox';
+import 'ojs/ojdialog';
 import ArrayDataProvider = require("ojs/ojarraydataprovider");
 import { utils } from './dashboardUtils';
+import { ojDialog } from 'ojs/ojdialog';
+import 'mytasks/pop-up-table/loader';
+
+interface PopUpTableElement extends HTMLElement {
+  setModel({ }): void
+}
+
 class DashboardViewModel {
   configsVal: ko.Observable = ko.observable("none");
   contextsDataProvider: any = ko.observable();
   readonly contextSelectedVal: ko.Observable = ko.observable();
   childVal: ko.Observable = ko.observable();
   childDataProvider: any = ko.observable();
-  constructor() {
+  sampletext: ko.Observable = ko.observable({ "val": "Parent - dashboard" });
+  readonly popUpAttr = document.getElementById('popUpTable') as PopUpTableElement;
 
+  constructor() {
+    //After DOM is initialised
   }
   fetchSelectContextData = (url) => {
     fetch(url + "/ecoui/modelservices/rest/1/setupcontextvoapi")
@@ -30,7 +41,7 @@ class DashboardViewModel {
     console.log('Seleted Val: ' + event.detail.value);
     if (event.detail.value != null) {
       let configs = JSON.parse(sessionStorage.getItem('configs'));
-      utils.getEndpoint( event.detail.value)
+      utils.getEndpoint(event.detail.value)
         .then(data => {
           let endpoint = data.items[0].ApiEndpoint;
           fetch(configs.ImagingUrl + "/ecoui/apmodelservices/rest/1/" + endpoint)
@@ -48,6 +59,17 @@ class DashboardViewModel {
     }
   };
 
+
+  openComposite = () => {
+    this.popUpAttr.setModel({ "org": "Ecovues" });
+    (document.getElementById("popUpTableDialog") as ojDialog).open();
+
+  }
+  onPopupTableListner = (event) => {
+    let dataObj = event.detail.value;
+    (document.getElementById("popUpTableDialog") as ojDialog).close();
+    console.log('Back from composite: ' + dataObj)
+  }
 
 
 
@@ -77,6 +99,7 @@ class DashboardViewModel {
    */
   disconnected(): void {
     // implement if needed
+
   }
 
   /**
@@ -85,6 +108,7 @@ class DashboardViewModel {
    */
   transitionCompleted(): void {
     // implement if needed
+    //After fully initialised, knockout bindings
 
   }
 }

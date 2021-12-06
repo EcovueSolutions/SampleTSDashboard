@@ -1,0 +1,43 @@
+{
+  "name": "pop-up-table",
+  "version": "1.0.0",
+  "jetVersion": "^11.1.0",
+  "displayName": "A user friendly, translatable name of the component.",
+  "description": "A translatable high-level description for the component.",
+  "properties": {
+    
+    "sampletext": {
+      "description": "The Object contains Configuration Values",
+      "type": "object"
+    }},
+  "methods": {
+    "setModel": {
+      "description": "Set source type and object",
+      "params": [
+        {
+          "name": "source",
+          "description": "An object with sourceType (string) and sourceObject (object) properties.",
+          "type": "object"
+        }
+      ]
+    },
+    "getModel": {
+      "description": "Get source type and object",
+      "return": "object"
+    },"setLanguage": {
+      "description": "Set source type and object"
+    }},
+  "events": {
+    "actionButtonClick": {
+      "description": "Triggered when row is selected.",
+      "bubbles": true,
+      "detail": {
+        "value": {
+          "description": "PO Object",
+          "type": "object"
+        }
+      }
+    }},
+  "slots": {},
+  "pack": "mytasks"
+}

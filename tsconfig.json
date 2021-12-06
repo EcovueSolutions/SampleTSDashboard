@@ -19,6 +19,9 @@
     "paths": {
       "ojs/*": [
         "./node_modules/@oracle/oraclejet/dist/types/*"
+      ],
+      "mytasks/*": [
+        "./src/ts/jet-composites/mytasks/*"
       ]
     },
     "declaration": true,

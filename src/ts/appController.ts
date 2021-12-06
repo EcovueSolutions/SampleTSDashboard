@@ -11,6 +11,7 @@ import "ojs/ojknockout";
 import "ojs/ojmodule-element";
 import { ojNavigationList } from "ojs/ojnavigationlist";
 import Context = require("ojs/ojcontext");
+import {configs} from './configurations';
 
 interface CoreRouterDetail {
   label: string;
@@ -27,8 +28,11 @@ class RootViewModel {
   userLogin: ko.Observable<string>;
   footerLinks: Array<object>;
   selection: KnockoutRouterAdapter<CoreRouterDetail>;
+  showLoader:ko.Observable=ko.observable(false);
 
   constructor() {
+    console.log('In appController: Loading configs');
+    configs();//Loading Configs
     // handle announcements sent when pages change, for Accessibility.
     //console.log('Invoking load configs from appController');
     this.manner = ko.observable("polite");
