@@ -19,7 +19,7 @@ class DashboardViewModel {
   childVal: ko.Observable = ko.observable();
   childDataProvider: any = ko.observable();
   sampletext: ko.Observable = ko.observable({ "val": "Parent - dashboard" });
-  readonly popUpAttr = document.getElementById('popUpTable') as PopUpTableElement;
+  popUpAttr: PopUpTableElement;
 
   constructor() {
     //After DOM is initialised
@@ -84,6 +84,7 @@ class DashboardViewModel {
   connected(): void {
     AccUtils.announce("Dashboard page loaded.");
     document.title = "Dashboard";
+    this.popUpAttr = document.getElementById('popUpTable') as PopUpTableElement;
     let configs = JSON.parse(sessionStorage.getItem('configs'));
     console.log('In Dashboard transition, get configs from local storage: ' + configs.ImagingUrl);
     if (configs == null)
