@@ -18,7 +18,7 @@ class DashboardViewModel {
   readonly contextSelectedVal: ko.Observable = ko.observable();
   childVal: ko.Observable = ko.observable();
   childDataProvider: any = ko.observable();
-  sampletext: ko.Observable = ko.observable({ "val": "Parent - dashboard" });
+  parentVal: ko.Observable = ko.observable({ "val": "Parent - dashboard" });
   popUpAttr: PopUpTableElement;
 
   constructor() {

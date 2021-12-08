@@ -22,18 +22,13 @@ export default class ViewModel implements Composite.ViewModel<Composite.Properti
         this.busyResolve = busyContext.addBusyState(options);
 
         this.composite = context.element;
+        let parentVal = context.properties.parentVal;
+        console.log('parentVal:'+parentVal);
 
         //Example observable
-        this.messageText = ko.observable("Hello from mytasks-pop-up-table");
+        this.messageText = ko.observable("Hello from "+parentVal);
         this.properties = context.properties;
         this.res = componentStrings["pop-up-table"];
-
-        let sampletext = context.properties.sampletext;
-
-        // Example for parsing context properties
-        if (sampletext) {
-            console.log("sampletext in composite: "+sampletext);
-        }
 
         //Once all startup and async activities have finished, relocate if there are any async activities
         this.busyResolve(); 
@@ -52,7 +47,7 @@ export default class ViewModel implements Composite.ViewModel<Composite.Properti
                 'value': 'onevue'
             }
         };
-        this.context.element.dispatchEvent(new CustomEvent('actionButtonClick', params));
+        this.composite.dispatchEvent(new CustomEvent('actionButtonClick', params));
     
       }
 

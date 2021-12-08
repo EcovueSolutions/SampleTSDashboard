@@ -6,7 +6,7 @@
   "description": "A translatable high-level description for the component.",
   "properties": {
     
-    "sampletext": {
+    "parentVal": {
       "description": "The Object contains Configuration Values",
       "type": "object"
     }},
