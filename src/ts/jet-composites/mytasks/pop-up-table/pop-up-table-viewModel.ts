@@ -23,10 +23,10 @@ export default class ViewModel implements Composite.ViewModel<Composite.Properti
 
         this.composite = context.element;
         let parentVal = context.properties.parentVal;
-        console.log('parentVal:'+parentVal);
+        console.log('parentVal:'+parentVal?.val);
 
         //Example observable
-        this.messageText = ko.observable("Hello from "+parentVal);
+        this.messageText = ko.observable("Hello from "+ parentVal?.val);
         this.properties = context.properties;
         this.res = componentStrings["pop-up-table"];
 
